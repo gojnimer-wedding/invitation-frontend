@@ -1,9 +1,14 @@
 ---
-import Layout from '@/layouts/BaseLayout.astro';
-import Carousel from '@/components/Carousel.astro';
+import Carousel from '@/components/Carousel.tsx';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import fetchBucketFiles from '@/services/supabase/fetch_bucket_files';
+
+const images = await fetchBucketFiles("wedding_photo_essay", "carousel_invite")
 
 ---
+<Fragment slot="head">
+	{images.map(url => <link rel="preload" href={url} as="image" />)}
+</Fragment>
 
 <BaseLayout title="Convite">
 	<section class="container grid items-center gap-6 pb-8 pt-6 md:py-10">
@@ -19,6 +24,6 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 			your apps. Free. Open Source.
 		  </p>
 		</div>
-		<Carousel bucketName='wedding_photo_essay' folderName='carousel_invite' />
+		<Carousel client:load images={images} />
 	  </section>
 </BaseLayout>
