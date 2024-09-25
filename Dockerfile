@@ -1,12 +1,9 @@
-FROM node:lts-alpine as runtime
+FROM node:18-slim
+
 WORKDIR /app
 
-COPY . .
+COPY package*.json .
 
-RUN npm install
-RUN npm run build
+RUN npm ci --audit=false --fund=false
 
-ENV HOST=0.0.0.0
-ENV PORT=4321
-EXPOSE 4321
-CMD node ./dist/server/entry.mjs
+CMD ["npm", "start"]

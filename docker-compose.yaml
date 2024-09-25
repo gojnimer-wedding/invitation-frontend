@@ -1,0 +1,13 @@
+services:
+  web:
+    container_name: wedding-invitation
+    build: .
+    environment:
+      - SERVICE_FQDN_MEMOS_5230
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+    volumes:
+      - "./:/app"
+      - "/app/.tscache"
+      - "/app/dist"
+      - "/app/node_modules"
