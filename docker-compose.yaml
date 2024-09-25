@@ -1,13 +1,14 @@
+version: "3.8"
+
 services:
-  web:
-    container_name: wedding-invitation
-    build: .
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4321:4321
     environment:
-      - SERVICE_FQDN_MEMOS_5230
+      - SERVICE_FQDN_APP_4321
       - SUPABASE_URL=${SUPABASE_URL}
       - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
-    volumes:
-      - "./:/app"
-      - "/app/.tscache"
-      - "/app/dist"
-      - "/app/node_modules"
+    command: node ./dist/server/entry.mjs

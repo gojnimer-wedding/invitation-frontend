@@ -1,9 +1,11 @@
-FROM node:18-slim
-
+FROM node:lts AS runtime
 WORKDIR /app
 
-COPY package*.json .
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile --production
 
-RUN yarn install --frozen-lockfile
+COPY . .
 
-CMD ["yarn", "start"]
+RUN yarn build
+
+EXPOSE 4321
