@@ -1,17 +1,32 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from "astro/config";
 
-import node from '@astrojs/node';
+import node from "@astrojs/node";
 
-import tailwind from '@astrojs/tailwind';
+import tailwind from "@astrojs/tailwind";
+
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
+  output: "server",
 
   adapter: node({
-    mode: 'standalone'
+    mode: "standalone",
   }),
-
-  integrations: [tailwind()]
+  env: {
+    schema: {
+      SUPABASE_URL: envField.string({ context: "server", access: "public" }),
+      SUPABASE_ANON_KEY: envField.string({
+        context: "server",
+        access: "secret",
+      }),
+    },
+  },
+  integrations: [
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    react(),
+  ],
 });
