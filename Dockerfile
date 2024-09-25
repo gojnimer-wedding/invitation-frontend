@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY package*.json .
 
-RUN npm ci --audit=false --fund=false
+RUN yarn install --frozen-lockfile
 
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
