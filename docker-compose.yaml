@@ -5,10 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - 4321:4321
     environment:
       - SERVICE_FQDN_APP_4321
       - SUPABASE_URL=${SUPABASE_URL}
       - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
-    command: node ./dist/server/entry.mjs
