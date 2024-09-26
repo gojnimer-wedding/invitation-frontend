@@ -4,7 +4,7 @@ import { ImagesSlider } from "@/components/ui/images-slider";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import fetchBucketFiles from "@/services/buckets/fetch_bucket_files";
 
-const images = await fetchBucketFiles("66f48bd2000eb9464dae");
+const images = await fetchBucketFiles("wedding_public", "carousel_main")
 const words = ["História de Amor", "União", "Jornada"];
 ---
 
