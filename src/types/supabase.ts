@@ -59,24 +59,6 @@ export type Database = {
   };
   public: {
     Tables: {
-      groups: {
-        Row: {
-          created_at: string;
-          id: number;
-          name: string;
-        };
-        Insert: {
-          created_at?: string;
-          id?: number;
-          name: string;
-        };
-        Update: {
-          created_at?: string;
-          id?: number;
-          name?: string;
-        };
-        Relationships: [];
-      };
       guests: {
         Row: {
           created_at: string;
@@ -106,49 +88,12 @@ export type Database = {
           {
             foreignKeyName: "guests_group_fkey";
             columns: ["group"];
-            referencedRelation: "groups";
+            referencedRelation: "guests_groups";
             referencedColumns: ["id"];
           }
         ];
       };
-      rel_guests_tags: {
-        Row: {
-          created_at: string | null;
-          guest_id: number | null;
-          id: number;
-          tag_id: number | null;
-          updated_at: string;
-        };
-        Insert: {
-          created_at?: string | null;
-          guest_id?: number | null;
-          id?: number;
-          tag_id?: number | null;
-          updated_at: string;
-        };
-        Update: {
-          created_at?: string | null;
-          guest_id?: number | null;
-          id?: number;
-          tag_id?: number | null;
-          updated_at?: string;
-        };
-        Relationships: [
-          {
-            foreignKeyName: "rel_guests_tags_guest_id_fkey";
-            columns: ["guest_id"];
-            referencedRelation: "guests";
-            referencedColumns: ["id"];
-          },
-          {
-            foreignKeyName: "rel_guests_tags_tag_id_fkey";
-            columns: ["tag_id"];
-            referencedRelation: "tags";
-            referencedColumns: ["id"];
-          }
-        ];
-      };
-      tags: {
+      guests_groups: {
         Row: {
           created_at: string;
           id: number;
@@ -165,6 +110,55 @@ export type Database = {
           name?: string;
         };
         Relationships: [];
+      };
+      guests_tags: {
+        Row: {
+          created_at: string;
+          id: number;
+          name: string;
+        };
+        Insert: {
+          created_at?: string;
+          id?: number;
+          name: string;
+        };
+        Update: {
+          created_at?: string;
+          id?: number;
+          name?: string;
+        };
+        Relationships: [];
+      };
+      rel_guests_tags: {
+        Row: {
+          created_at: string;
+          guest_id: number;
+          tag_id: number;
+        };
+        Insert: {
+          created_at?: string;
+          guest_id: number;
+          tag_id: number;
+        };
+        Update: {
+          created_at?: string;
+          guest_id?: number;
+          tag_id?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "rel_guests_tags_guest_id_fkey";
+            columns: ["guest_id"];
+            referencedRelation: "guests";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "rel_guests_tags_tag_id_fkey";
+            columns: ["tag_id"];
+            referencedRelation: "guests_tags";
+            referencedColumns: ["id"];
+          }
+        ];
       };
     };
     Views: {

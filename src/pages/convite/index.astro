@@ -6,6 +6,7 @@ import fetchBucketFiles from "@/services/buckets/fetch_bucket_files";
 
 const images = await fetchBucketFiles("wedding_public", "carousel_main")
 const words = ["História de Amor", "União", "Jornada"];
+
 ---
 
 <Fragment slot="head">
@@ -18,8 +19,8 @@ const words = ["História de Amor", "União", "Jornada"];
       class="h-dvh flex items-center justify-center overflow-x-hidden bg-black"
     >
       <p class="font-bhood text-[7rem] md:text-[10rem] !text-[#db6f82]">GK</p>
-    </section>
-    <section class="h-44 bg-gradient-to-b from-black via-gray-600"></section>
+    </section> 
+    <section class="h-[30dvh] bg-gradient-to-b from-black via-neutral-300 to-white"></section>
     <section class="container flex justify-start pb-6 pt-12">
       <div class="text-3xl font-normal text-neutral-600 dark:text-neutral-400">
         Nossa <FlipWords client:load words={words} />
