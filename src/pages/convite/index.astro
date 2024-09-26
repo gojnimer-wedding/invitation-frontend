@@ -1,12 +1,11 @@
 ---
-import Carousel from "@/components/Carousel.tsx";
 import { FlipWords } from "@/components/ui/flip-words";
 import { ImagesSlider } from "@/components/ui/images-slider";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import fetchBucketFiles from "@/services/buckets/fetch_bucket_files";
 
 const images = await fetchBucketFiles("66f48bd2000eb9464dae");
-const words = ["better", "cute", "beautiful", "modern"];
+const words = ["História de Amor", "União", "Jornada"];
 ---
 
 <Fragment slot="head">
@@ -18,11 +17,11 @@ const words = ["better", "cute", "beautiful", "modern"];
     <div
       class="text-4xl mx-auto font-normal text-neutral-600 dark:text-neutral-400"
     >
-      Test
-      <FlipWords client:load words={words} />
+      Nossa <FlipWords client:load words={words} />
       <br />
-      websites with Aceternity UI
+      Venha Celebrar Conosco
     </div>
+    <div class="font-bhood text-[10rem] text-center">GK</div>
     <ImagesSlider
       client:load
       overlay={false}
