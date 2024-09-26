@@ -14,14 +14,12 @@ const words = ["História de Amor", "União", "Jornada"];
 
 <BaseLayout title="Convite">
   <section class="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-    <div
-      class="text-4xl mx-auto font-normal text-neutral-600 dark:text-neutral-400"
-    >
-      Nossa <FlipWords client:load words={words} />
-      <br />
-      Venha Celebrar Conosco
-    </div>
     <div class="font-bhood text-[10rem] text-center">GK</div>
+    <div
+      class="text-3xl mx-auto font-normal text-neutral-600 dark:text-neutral-400"
+    >
+      Nossa <FlipWords client:load words={words} />, venha celebrar conosco!
+    </div>
     <ImagesSlider
       client:load
       overlay={false}

@@ -56,7 +56,7 @@ const config = {
       },
       fontFamily: {
         sans: ["Inter", ...fontFamily.sans],
-        bhood: ['Brotherhood Script', ...fontFamily.sans],
+        bhood: ["Brotherhood Script", ...fontFamily.sans],
       },
       keyframes: {
         "accordion-down": {
