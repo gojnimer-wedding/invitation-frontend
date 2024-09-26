@@ -13,14 +13,16 @@ const words = ["História de Amor", "União", "Jornada"];
 </Fragment>
 
 <BaseLayout title="Convite">
-  <div class="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-    <section class="h-dvh flex items-center justify-center">
-      <p class="font-bhood text-[10rem]">GK</p>
+  <div class="container flex flex-col gap-6">
+    <section class="h-dvh flex items-center justify-center overflow-x-hidden">
+      <p class="font-bhood text-[7rem] md:text-[10rem]">GK</p>
     </section>
 
     <section class="flex justify-start">
-      <div class="text-2xl font-normal text-neutral-600 dark:text-neutral-400">
-        Nossa <FlipWords client:load words={words} />, venha celebrar conosco!
+      <div class="text-3xl font-normal text-neutral-600 dark:text-neutral-400">
+        Nossa <FlipWords client:load words={words} />
+        <br />
+        venha celebrar conosco!
       </div>
     </section>
 
