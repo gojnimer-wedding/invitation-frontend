@@ -1,28 +1,40 @@
 ---
-import Carousel from '@/components/Carousel.tsx';
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import fetchBucketFiles from '@/services/supabase/fetch_bucket_files';
+import { FlipWords } from "@/components/ui/flip-words";
+import { ImagesSlider } from "@/components/ui/images-slider";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import fetchBucketFiles from "@/services/buckets/fetch_bucket_files";
 
-const images = await fetchBucketFiles("66f48bd2000eb9464dae")
-
+const images = await fetchBucketFiles("wedding_public", "carousel_main")
+const words = ["História de Amor", "União", "Jornada"];
 ---
+
 <Fragment slot="head">
-	{images.map(url => <link rel="preload" href={url} as="image" />)}
+  {images.map((url) => <link rel="preload" href={url} as="image" />)}
 </Fragment>
 
 <BaseLayout title="Convite">
-	<section class="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-		<div class="flex max-w-[980px] flex-col items-start gap-2">
-		  <h1
-			class="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl"
-		  >
-			Template testinggg <br class="hidden sm:inline" />
-			Convite de casamento.
-		  </h1>
-		  <p class="max-w-[700px] text-lg text-muted-foreground">
-			Lorem ipsum.
-		  </p>
-		</div>
-		<Carousel client:load images={images} />
-	  </section>
+  <div class="flex flex-col pb-32">
+    <section
+      class="h-dvh flex items-center justify-center overflow-x-hidden bg-black"
+    >
+      <p class="font-bhood text-[7rem] md:text-[10rem] !text-[#db6f82]">GK</p>
+    </section>
+    <section class="h-44 bg-gradient-to-b from-black via-gray-600"></section>
+    <section class="container flex justify-start pb-6 pt-12">
+      <div class="text-3xl font-normal text-neutral-600 dark:text-neutral-400">
+        Nossa <FlipWords client:load words={words} />
+        <br />
+        venha celebrar conosco!
+      </div>
+    </section>
+    <section class="container">
+      <ImagesSlider
+        client:load
+        overlay={false}
+        className=" h-[40rem] rounded-lg"
+        direction="up"
+        images={images}
+      />
+    </section>
+  </div>
 </BaseLayout>
