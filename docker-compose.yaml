@@ -7,5 +7,6 @@ services:
       dockerfile: Dockerfile
     environment:
       - SERVICE_FQDN_APP_4321
-      - SUPABASE_URL=${SUPABASE_URL}
-      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+      - APPWRITE_API_KEY=${APPWRITE_API_KEY}
+      - APPWRITE_PROJECT_ID=${APPWRITE_PROJECT_ID}
+      - APPWRITE_URL=${APPWRITE_URL}
