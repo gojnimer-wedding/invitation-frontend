@@ -6,7 +6,7 @@ COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 COPY . .
 
-RUN lt
+RUN ls -a
 RUN printenv
 RUN yarn build
 
