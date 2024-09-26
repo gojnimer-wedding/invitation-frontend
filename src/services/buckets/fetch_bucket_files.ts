@@ -1,6 +1,6 @@
 import appwrite from "@/lib/appwrite";
 import { APPWRITE_PROJECT_ID, APPWRITE_URL } from "astro:env/server";
-import { Account, Client, Databases, Storage } from "node-appwrite";
+import { Storage } from "node-appwrite";
 
 export default async function fetchBucketFiles(bucketId: string) {
   var images: string[] = [];
