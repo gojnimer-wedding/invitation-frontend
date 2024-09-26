@@ -16,8 +16,15 @@ export default defineConfig({
   }),
   env: {
     schema: {
-      SUPABASE_URL: envField.string({ context: "server", access: "public" }),
-      SUPABASE_ANON_KEY: envField.string({
+      APPWRITE_URL: envField.string({
+        context: "server",
+        access: "public",
+      }),
+      APPWRITE_PROJECT_ID: envField.string({
+        context: "server",
+        access: "public",
+      }),
+      APPWRITE_API_KEY: envField.string({
         context: "server",
         access: "secret",
       }),
