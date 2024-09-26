@@ -13,25 +13,28 @@ const words = ["História de Amor", "União", "Jornada"];
 </Fragment>
 
 <BaseLayout title="Convite">
-  <div class="container flex flex-col gap-6 pb-32">
-    <section class="h-dvh flex items-center justify-center overflow-x-hidden">
-      <p class="font-bhood text-[7rem] md:text-[10rem]">GK</p>
+  <div class="flex flex-col pb-32">
+    <section
+      class="h-dvh flex items-center justify-center overflow-x-hidden bg-black"
+    >
+      <p class="font-bhood text-[7rem] md:text-[10rem] !text-[#db6f82]">GK</p>
     </section>
-
-    <section class="flex justify-start">
+    <section class="h-44 bg-gradient-to-b from-black via-gray-600"></section>
+    <section class="container flex justify-start pb-6 pt-12">
       <div class="text-3xl font-normal text-neutral-600 dark:text-neutral-400">
         Nossa <FlipWords client:load words={words} />
         <br />
         venha celebrar conosco!
       </div>
     </section>
-
-    <ImagesSlider
-      client:load
-      overlay={false}
-      className="h-[40rem] rounded-lg"
-      direction="up"
-      images={images}
-    />
+    <section class="container">
+      <ImagesSlider
+        client:load
+        overlay={false}
+        className=" h-[40rem] rounded-lg"
+        direction="up"
+        images={images}
+      />
+    </section>
   </div>
 </BaseLayout>
