@@ -9,3 +9,9 @@ services:
       - SERVICE_FQDN_APP_4321
       - SUPABASE_URL=$SUPABASE_URL
       - SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
