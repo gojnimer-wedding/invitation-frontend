@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig, envField } from "astro/config";
+import { defineConfig } from "astro/config";
 
 import node from "@astrojs/node";
 
@@ -16,14 +16,6 @@ export default defineConfig({
   }),
   env: {
     schema: {
-      SUPABASE_URL: envField.string({
-        context: "server",
-        access: "public",
-      }),
-      SUPABASE_ANON_KEY: envField.string({
-        context: "server",
-        access: "secret",
-      }),
     },
   },
   integrations: [
