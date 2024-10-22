@@ -1,8 +1,11 @@
-import * as Minio from 'minio'
+import { MINIO_API_ACCESS_KEY, MINIO_API_SECRET_KEY, MINIO_API_URL } from "astro:env/server";
+import * as Minio from 'minio';
 
 const minioClient = new Minio.Client({
-  endPoint: 'https://minio.guilhermekarine.com',
+  endPoint: MINIO_API_URL,
   useSSL: true,
-  accessKey: 'Q3AM3UQ867SPQQA43P2F',
-  secretKey: 'zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG',
+  accessKey: MINIO_API_ACCESS_KEY,
+  secretKey: MINIO_API_SECRET_KEY,
 })
+
+export default minioClient;

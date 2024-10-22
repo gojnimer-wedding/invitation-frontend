@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 
 import node from "@astrojs/node";
 
@@ -16,7 +16,9 @@ export default defineConfig({
   }),
   env: {
     schema: {
-
+      MINIO_API_URL: envField.string({ context: "server", access: "public" }),
+      MINIO_API_ACCESS_KEY: envField.string({ context: "server", access: "public" }),
+      MINIO_API_SECRET_KEY: envField.string({ context: "server", access: "secret" }),
     },
   },
   integrations: [
