@@ -10,7 +10,6 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   output: "server",
-
   adapter: node({
     mode: "standalone",
   }),
@@ -20,6 +19,10 @@ export default defineConfig({
         context: "server",
         access: "public",
       }),
+      MINIO_API_URL: envField.string({ context: "server", access: "public" }),
+      MINIO_API_ACCESS_KEY: envField.string({ context: "server", access: "public" }),
+      MINIO_API_SECRET_KEY: envField.string({ context: "server", access: "secret" }),
+
     },
   },
   integrations: [
