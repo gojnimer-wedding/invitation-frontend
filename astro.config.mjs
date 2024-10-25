@@ -15,9 +15,14 @@ export default defineConfig({
   }),
   env: {
     schema: {
+      GOOGLE_API_KEY: envField.string({
+        context: "server",
+        access: "public",
+      }),
       MINIO_API_URL: envField.string({ context: "server", access: "public" }),
       MINIO_API_ACCESS_KEY: envField.string({ context: "server", access: "public" }),
       MINIO_API_SECRET_KEY: envField.string({ context: "server", access: "secret" }),
+
     },
   },
   integrations: [
