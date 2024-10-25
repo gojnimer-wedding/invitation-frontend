@@ -1,10 +1,10 @@
 import { MINIO_API_ACCESS_KEY, MINIO_API_SECRET_KEY, MINIO_API_URL } from "astro:env/server";
 import { Client } from "minio";
 
-const url = new URL(MINIO_API_URL)
+const hostname = MINIO_API_URL.replace(/(^\w+:|^)\/\//, '')
 
 const minioClient = new Client({
-  endPoint: url.hostname,
+  endPoint: hostname,
   useSSL: true,
   accessKey: MINIO_API_ACCESS_KEY,
   secretKey: MINIO_API_SECRET_KEY,
