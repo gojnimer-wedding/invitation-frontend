@@ -4,10 +4,25 @@ import Location from "@/components/Location.astro";
 import { FlipWords } from "@/components/ui/flip-words";
 import { ImagesSlider } from "@/components/ui/images-slider";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import NocoDB from "@/lib/nocodb";
 import fetchBucketFiles from "@/services/buckets/fetch_bucket_files";
 
 const images = await fetchBucketFiles("frontend", "wedding");
 const words = ["História de Amor", "União", "Jornada"];
+
+const dataTest = await NocoDB.dbViewRow
+  .list("noco", "pk9tnb5adbhghj1", "m8v8mxe3z6vw5bz", "vw6rle2g8iou7orv", {
+    offset: 0,
+    limit: 25,
+    where: "",
+  })
+  .then(function (data) {
+    console.log(data);
+  })
+  .catch(function (error) {
+    console.error(error);
+  });
+console.log(dataTest);
 ---
 
 <Fragment slot="head">
@@ -16,7 +31,7 @@ const words = ["História de Amor", "União", "Jornada"];
 
 <BaseLayout title="Convite">
   <div class="flex flex-col pb-32">
-  <Cover />
+    <Cover />
     <section class="container flex justify-start pb-6 pt-12">
       <div class="text-3xl font-normal text-neutral-600 dark:text-neutral-400">
         Test bucket <FlipWords client:load words={words} />
