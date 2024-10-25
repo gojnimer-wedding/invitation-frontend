@@ -10,18 +10,18 @@ import fetchBucketFiles from "@/services/buckets/fetch_bucket_files";
 const images = await fetchBucketFiles("frontend", "wedding");
 const words = ["História de Amor", "União", "Jornada"];
 
-const dataTest = await NocoDB.dbViewRow
+const status = await NocoDB.dbViewRow
   .list("noco", "pk9tnb5adbhghj1", "m8v8mxe3z6vw5bz", "vw6rle2g8iou7orv", {
     offset: 0,
     where: "",
   })
   .then(function (data) {
-    console.log(data);
+    return (data.list[0] as any).Status;
   })
   .catch(function (error) {
     console.error(error);
   });
-console.log(dataTest);
+console.log(status);
 ---
 
 <Fragment slot="head">
@@ -35,7 +35,7 @@ console.log(dataTest);
       <div class="text-3xl font-normal text-neutral-600 dark:text-neutral-400">
         Test bucket <FlipWords client:load words={words} />
         <br />
-        venha celebrar conosco!
+        venha celebrar conosco! status: {status}
       </div>
     </section>
     <section class="container">
