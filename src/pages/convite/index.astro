@@ -1,27 +1,16 @@
 ---
-import Cover from "@/components/Cover.astro";
 import Location from "@/components/Location.astro";
 import { FlipWords } from "@/components/ui/flip-words";
 import { ImagesSlider } from "@/components/ui/images-slider";
+import Carousel from "@/components/ui/three-d-carousel";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import NocoDB from "@/lib/nocodb";
 import fetchBucketFiles from "@/services/buckets/fetch_bucket_files";
+import getInvitation from "@/services/nocodb/get_invitation";
 
 const images = await fetchBucketFiles("frontend", "wedding");
 const words = ["História de Amor", "União", "Jornada"];
 
-const status = await NocoDB.dbViewRow
-  .list("noco", "pk9tnb5adbhghj1", "m8v8mxe3z6vw5bz", "vw6rle2g8iou7orv", {
-    offset: 0,
-    where: "",
-  })
-  .then(function (data) {
-    return (data.list[0] as any).Status;
-  })
-  .catch(function (error) {
-    console.error(error);
-  });
-console.log(status);
+const status = await getInvitation("");
 ---
 
 <Fragment slot="head">
@@ -30,7 +19,14 @@ console.log(status);
 
 <BaseLayout title="Convite">
   <div class="flex flex-col pb-32">
-    <Cover />
+    <!--    <Cover /> -->
+    <div
+      class="min-h-[500px] flex flex-col justify-center border border-dashed rounded-lg space-y-4"
+    >
+      <div class="p-2">
+        <Carousel images={images} client:load />
+      </div>
+    </div>
     <section class="container flex justify-start pb-6 pt-12">
       <div class="text-3xl font-normal text-neutral-600 dark:text-neutral-400">
         Test bucket <FlipWords client:load words={words} />
