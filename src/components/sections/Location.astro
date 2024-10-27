@@ -3,14 +3,13 @@ import { Car, Clock, MapPin, Phone } from "lucide-react";
 import MiniMap from "../ui/mini-map.astro";
 ---
 
-<section class="flex flex-col place-items-center mx-2 md:mx-10">
+<section class="flex flex-col place-items-center mx-2">
   <p class="font-bhood text-[4rem] md:text-[6rem] !text-[#db6f82]">
     Informações do Local
   </p>
   <div class="flex flex-col md:flex-row gap-4 mx-4 md:mx-10 p-2 w-full">
-    <div
-      class="md:flex-1 bg-white shadow-xl rounded-lg p-6 flex flex-col gap-4 max-sm:order-1"
-    >
+    <div class="md:flex-1 p-3 flex flex-col gap-4 rounded-lg shadow-lg">
+      <p>Buffet Montello</p>
       <div class="flex items-start space-x-3">
         <MapPin className="w-5 h-5 mt-0.5 text-primary" />
         <div>
@@ -34,28 +33,13 @@ import MiniMap from "../ui/mini-map.astro";
       </div>
       <div class="space-y-2">
         <h3 class="font-semibold">Informações úteis</h3>
-        <div class="flex items-center space-x-2">
-          <Car className="w-4 h-4 text-primary" />
-          <span>Estacionamento na porta</span>
-        </div>
-        <div class="flex items-center space-x-2">
-          <Car className="w-4 h-4 text-primary" />
-          <span>Estacionamento na porta</span>
-        </div>
-        <div class="flex items-center space-x-2">
-          <Car className="w-4 h-4 text-primary" />
-          <span>Estacionamento na porta</span>
-        </div>
-        <div class="flex items-center space-x-2">
-          <Car className="w-4 h-4 text-primary" />
-          <span>Estacionamento na porta</span>
-        </div>
+
         <div class="flex items-center space-x-2">
           <Car className="w-4 h-4 text-primary" />
           <span>Estacionamento na porta</span>
         </div>
       </div>
     </div>
-    <MiniMap />
+    <MiniMap size={`200px`} />
   </div>
 </section>

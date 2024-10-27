@@ -9,9 +9,7 @@ const images = await fetchBucketFiles("frontend", "wedding");
   {images.map((url) => <link rel="preload" href={url} as="image" />)}
 </Fragment>
 
-<div
-  class="min-h-[500px] flex flex-col justify-center border border-dashed rounded-lg space-y-4"
->
+<div class="min-h-[500px] flex flex-col justify-center rounded-lg space-y-4">
   <div class="p-2">
     <ThreeDPhotoCarousel images={images} client:load />
   </div>
