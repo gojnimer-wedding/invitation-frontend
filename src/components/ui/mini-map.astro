@@ -1,12 +1,12 @@
 ---
 import { GOOGLE_API_KEY } from "astro:env/server";
 
-const { size } = Astro.props;
+const { className } = Astro.props;
 ---
 
 <div
   style="list-style:none; transition: none;overflow:hidden;"
-  class=`h-[${size}] w-[${size}] max-w-[100%] rounded-lg`
+  class={className}
 >
   <div
     id="embedded-map-display"
