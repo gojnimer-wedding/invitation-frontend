@@ -4,14 +4,16 @@ import Location from "@/components/sections/Location.astro";
 import MainAlbum from "@/components/sections/MainAlbum.astro";
 import Presentation from "@/components/sections/Presentation.astro";
 import RotatingAlbum from "@/components/sections/RotatingAlbum.astro";
+import Schedule from "@/components/sections/Schedule.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Convite">
-  <div class="flex flex-col pb-32">
+  <div class="pb-32 bg-white w-full md:max-w-screen-md justify-self-center">
     <Cover />
     <Presentation />
     <MainAlbum />
+    <Schedule />
     <Location />
     <RotatingAlbum />
   </div>

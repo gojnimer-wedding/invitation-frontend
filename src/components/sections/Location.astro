@@ -1,9 +1,71 @@
 ---
+import { Info, MapPin, Phone } from "lucide-react";
 import MiniMap from "../ui/mini-map.astro";
 ---
 
-<section
-  class="flex justify-end mx-24 bg-white shadow-2xl border border-black p-10 rounded-lg"
->
-  <MiniMap />
+<section class="flex flex-col place-items-center mx-2">
+  <p class="font-bhood text-[4rem] md:text-[6rem] !text-[#db6f82]">
+    Informações do Local
+  </p>
+  <div
+    class="w-full flex flex-col md:flex-row gap-4 p-4 max-sm:place-items-center"
+  >
+    <div class="flex flex-col flex-1 gap-3">
+      <div class="flex items-start space-x-3">
+        <MapPin className="w-5 h-5 mt-0.5 text-primary !text-[#db6f82]" />
+        <div>
+          <h3 class="font-semibold !text-[#db6f82]">Endereço</h3>
+          <p>R. Lateral, 944 - Aricanduva, São Paulo - SP, 03479-000</p>
+        </div>
+      </div>
+      <div class="flex items-start space-x-3">
+        <Phone className="w-5 h-5 mt-0.5 text-primary !text-[#db6f82]" />
+        <div>
+          <h3 class="font-semibold !text-[#db6f82]">Telefone</h3>
+          <p>+55 (11) 2639-6778</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-2 place-items-center">
+      <MiniMap className="size-80 rounded-lg justify-self-center" />
+      <div class="flex items-center space-x-2">
+        <Info className="size-4 text-primary !text-[#db6f82]" />
+        <p class="text-sm text-muted-foreground">Estacionamento no local</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="flex flex-col md:flex-row gap-4 mx-4 md:mx-10 p-2 w-full">
+    <div class="md:flex-1 p-3 flex flex-col gap-4 rounded-lg shadow-lg">
+      <p>Buffet Montello</p>
+      <div class="flex items-start space-x-3">
+        <MapPin className="w-5 h-5 mt-0.5 text-primary" />
+        <div>
+          <h3 class="font-semibold">Endereço</h3>
+          <p>R. Lateral, 944 - Aricanduva, São Paulo - SP, 03479-000</p>
+        </div>
+      </div>
+      <div class="flex items-start space-x-3">
+        <Phone className="w-5 h-5 mt-0.5 text-primary" />
+        <div>
+          <h3 class="font-semibold">Telefone</h3>
+          <p>+55 (11) 2639-6778</p>
+        </div>
+      </div>
+      <div class="flex items-start space-x-3">
+        <Clock className="w-5 h-5 mt-0.5 text-primary" />
+        <div>
+          <h3 class="font-semibold">Horário da cerimonia</h3>
+          <p>Sexta-feira, 17 de Janeiro, 2025 às 21:00</p>
+        </div>
+      </div>
+      <div class="space-y-2">
+        <h3 class="font-semibold">Informações úteis</h3>
+
+        <div class="flex items-center space-x-2">
+          <Car className="w-4 h-4 text-primary" />
+          <span>Estacionamento na porta</span>
+        </div>
+      </div>
+    </div> -->
 </section>

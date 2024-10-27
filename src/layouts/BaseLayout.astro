@@ -9,12 +9,12 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="w-dvw overflow-x-hidden">
   <head>
     <HeadSEO title={title} description={description} />
     <slot name="head" />
   </head>
-  <body class="min-h-screen bg-background font-sans antialiased">
+  <body class="min-h-screen bg-background font-sans antialiased bg-black">
     <div class="relative flex min-h-screen flex-col">
       <main class="flex-auto">
         <slot />
