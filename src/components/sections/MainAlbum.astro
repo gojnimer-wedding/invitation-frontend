@@ -1,0 +1,19 @@
+---
+import fetchBucketFiles from "@/services/buckets/fetch_bucket_files";
+import { ImagesSlider } from "../ui/images-slider";
+const images = await fetchBucketFiles("frontend", "wedding");
+---
+
+<Fragment slot="head">
+  {images.map((url) => <link rel="preload" href={url} as="image" />)}
+</Fragment>
+
+<section class="container">
+  <ImagesSlider
+    client:load
+    overlay={false}
+    className=" h-[40rem] rounded-lg"
+    direction="up"
+    images={images}
+  />
+</section>
