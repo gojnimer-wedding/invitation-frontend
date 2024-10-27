@@ -1,52 +1,18 @@
 ---
-import Location from "@/components/Location.astro";
-import { FlipWords } from "@/components/ui/flip-words";
-import { ImagesSlider } from "@/components/ui/images-slider";
-import Carousel from "@/components/ui/three-d-carousel";
+import Cover from "@/components/sections/Cover.astro";
+import Location from "@/components/sections/Location.astro";
+import MainAlbum from "@/components/sections/MainAlbum.astro";
+import Presentation from "@/components/sections/Presentation.astro";
+import RotatingAlbum from "@/components/sections/RotatingAlbum.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import fetchBucketFiles from "@/services/buckets/fetch_bucket_files";
-import getInvitation from "@/services/nocodb/get_invitation";
-
-const images = await fetchBucketFiles("frontend", "wedding");
-const words = ["História de Amor", "União", "Jornada"];
-
-const status = await getInvitation("");
 ---
-
-<Fragment slot="head">
-  {images.map((url) => <link rel="preload" href={url} as="image" />)}
-</Fragment>
 
 <BaseLayout title="Convite">
   <div class="flex flex-col pb-32">
-    <!--    <Cover /> -->
-    <div
-      class="min-h-[500px] flex flex-col justify-center border border-dashed rounded-lg space-y-4"
-    >
-      <div class="p-2">
-        <Carousel images={images} client:load />
-      </div>
-    </div>
-    <section class="container flex justify-start pb-6 pt-12">
-      <div class="text-3xl font-normal text-neutral-600 dark:text-neutral-400">
-        Test bucket <FlipWords client:load words={words} />
-        <br />
-        venha celebrar conosco! status: {status}
-      </div>
-    </section>
-    <section class="container">
-      <ImagesSlider
-        client:load
-        overlay={false}
-        className=" h-[40rem] rounded-lg"
-        direction="up"
-        images={images}
-      />
-    </section>
-    <div
-      class="flex justify-end mx-24 bg-white shadow-2xl border border-black p-10 rounded-lg"
-    >
-      <Location />
-    </div>
+    <Cover />
+    <Presentation />
+    <MainAlbum />
+    <Location />
+    <RotatingAlbum />
   </div>
 </BaseLayout>

@@ -1,0 +1,16 @@
+---
+import getInvitation from "@/services/nocodb/get_invitation";
+import { FlipWords } from "../ui/flip-words";
+
+const words = ["História de Amor", "União", "Jornada"];
+
+const status = await getInvitation("");
+---
+
+<section class="container flex justify-start pb-6 pt-12">
+  <div class="text-3xl font-normal text-neutral-600 dark:text-neutral-400">
+    Test bucket <FlipWords client:load words={words} />
+    <br />
+    venha celebrar conosco! status: {status}
+  </div>
+</section>

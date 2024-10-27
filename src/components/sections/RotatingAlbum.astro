@@ -1,0 +1,18 @@
+---
+import fetchBucketFiles from "@/services/buckets/fetch_bucket_files";
+import ThreeDPhotoCarousel from "../ui/three-d-carousel";
+
+const images = await fetchBucketFiles("frontend", "wedding");
+---
+
+<Fragment slot="head">
+  {images.map((url) => <link rel="preload" href={url} as="image" />)}
+</Fragment>
+
+<div
+  class="min-h-[500px] flex flex-col justify-center border border-dashed rounded-lg space-y-4"
+>
+  <div class="p-2">
+    <ThreeDPhotoCarousel images={images} client:load />
+  </div>
+</div>
