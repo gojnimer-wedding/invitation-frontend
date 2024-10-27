@@ -1,13 +1,16 @@
 ---
-import Cover from "@/components/Cover.astro";
 import Location from "@/components/Location.astro";
 import { FlipWords } from "@/components/ui/flip-words";
 import { ImagesSlider } from "@/components/ui/images-slider";
+import Carousel from "@/components/ui/three-d-carousel";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import fetchBucketFiles from "@/services/buckets/fetch_bucket_files";
+import getInvitation from "@/services/nocodb/get_invitation";
 
 const images = await fetchBucketFiles("frontend", "wedding");
 const words = ["História de Amor", "União", "Jornada"];
+
+const status = await getInvitation("");
 ---
 
 <Fragment slot="head">
@@ -16,12 +19,19 @@ const words = ["História de Amor", "União", "Jornada"];
 
 <BaseLayout title="Convite">
   <div class="flex flex-col pb-32">
-  <Cover />
+    <!--    <Cover /> -->
+    <div
+      class="min-h-[500px] flex flex-col justify-center border border-dashed rounded-lg space-y-4"
+    >
+      <div class="p-2">
+        <Carousel images={images} client:load />
+      </div>
+    </div>
     <section class="container flex justify-start pb-6 pt-12">
       <div class="text-3xl font-normal text-neutral-600 dark:text-neutral-400">
         Test bucket <FlipWords client:load words={words} />
         <br />
-        venha celebrar conosco!
+        venha celebrar conosco! status: {status}
       </div>
     </section>
     <section class="container">

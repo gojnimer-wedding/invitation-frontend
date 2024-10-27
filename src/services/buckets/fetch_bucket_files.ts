@@ -2,7 +2,7 @@ import minioClient from "@/lib/minio";
 import { MINIO_API_URL } from "astro:env/server";
 
 const generatePublicMinioUrl = (bucket: string, object: string) => {
-  return `https://${MINIO_API_URL}/${bucket}/${object}`;
+  return `${MINIO_API_URL}/${bucket}/${object}`;
 }
 
 export default async function fetchBucketFiles(
