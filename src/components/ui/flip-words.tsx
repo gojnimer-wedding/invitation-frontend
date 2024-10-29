@@ -23,7 +23,8 @@ export const FlipWords = ({
   }, [currentWord, words]);
 
   useEffect(() => {
-    if (!isAnimating)
+    /*  if (!isAnimating) -- original */
+    if (!isAnimating && currentWord !== words[words.length - 1])
       setTimeout(() => {
         startAnimation();
       }, duration);
