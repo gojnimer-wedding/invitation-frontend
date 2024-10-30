@@ -1,5 +1,4 @@
 ---
-import { motion } from "framer-motion";
 import { FlipWords } from "../ui/flip-words";
 const words = ["Você está sendo convidado...", "Para o casamento de"];
 /* const words = [
@@ -18,32 +17,14 @@ const words = ["Você está sendo convidado...", "Para o casamento de"];
       words={words}
       className="text-[3rem] !text-[#db6f82] font-dancing"
     />
-    <motion.p
-      client:only="react"
-      className="font-bhood text-[4rem] md:text-[6rem] !text-[#db6f82] text-center"
-      variants={{
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 },
-      }}
-      initial="hidden"
-      animate="visible"
-      transition={{ duration: 1.5, delay: 5 }}
+    <p
+      class="font-bhood text-[4rem] md:text-[6rem] !text-[#db6f82] text-center"
     >
       Guilherme e Karine
-    </motion.p>
-    <motion.p
-      client:only="react"
-      className="font-dancing text-muted-foreground text-[1.8rem]"
-      variants={{
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 },
-      }}
-      initial="hidden"
-      animate="visible"
-      transition={{ duration: 1.5, delay: 6 }}
-    >
+    </p>
+    <p class="font-dancing text-muted-foreground text-[1.8rem] text-center">
       Com muita alegria convidamos você para o dia mais esperado de nossas
       vidas, venha celebrar conosco o nosso casamento!
-    </motion.p>
+    </p>
   </div>
 </section>

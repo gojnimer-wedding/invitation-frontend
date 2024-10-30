@@ -12,6 +12,7 @@ export const FlipWords = ({
   duration?: number;
   className?: string;
 }) => {
+  const [inView, setInView] = useState<boolean>(false);
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
@@ -24,11 +25,11 @@ export const FlipWords = ({
 
   useEffect(() => {
     /*  if (!isAnimating) -- original */
-    if (!isAnimating && currentWord !== words[words.length - 1])
+    if (!isAnimating && inView && currentWord !== words[words.length - 1])
       setTimeout(() => {
         startAnimation();
       }, duration);
-  }, [isAnimating, duration, startAnimation]);
+  }, [isAnimating, duration, startAnimation, inView]);
 
   return (
     <AnimatePresence
@@ -37,6 +38,9 @@ export const FlipWords = ({
       }}
     >
       <motion.div
+        onViewportEnter={() => {
+          setInView(true);
+        }}
         initial={{
           opacity: 0,
           y: 10,
