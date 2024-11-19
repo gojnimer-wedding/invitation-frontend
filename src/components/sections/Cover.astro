@@ -1,7 +1,31 @@
+---
+import { NumberTicker } from "../ui/number-ticker";
+
+function daysRemaining() {
+  const today = new Date();
+  const futureDate = new Date("2025-01-17T00:00:00-03:00"); // Future date with São Paulo timezone
+
+  const oneDay = 1000 * 60 * 60 * 24; // Milliseconds in one day
+  const differenceInMilliseconds = futureDate.getTime() - today.getTime();
+
+  const differenceInDays = Math.ceil(differenceInMilliseconds / oneDay);
+
+  return differenceInDays;
+}
+---
+
 <section
-  class="h-dvh flex items-center justify-center overflow-x-hidden bg-black"
+  class="h-dvh flex items-center justify-center overflow-x-hidden bg-black relative"
 >
   <p class="font-bhood text-[7rem] md:text-[10rem] !text-[#db6f82]">GK</p>
+  <span class="absolute bottom-20 font-dancing text-xl text-neutral-200">
+    Faltam apenas
+    <NumberTicker
+      className="!text-[#db6f82] text-xl"
+      client:only="react"
+      value={daysRemaining()}
+    /> dias!
+  </span>
 </section>
 <section class="h-[20dvh] bg-gradient-to-b from-black via-neutral-300 to-white">
 </section>

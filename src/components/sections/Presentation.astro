@@ -1,22 +1,29 @@
 ---
-import { FlipWords } from "../ui/flip-words";
-
-const words = [
-  "Neste momento único e especial",
-  "Nessa jornada inesquecível",
-  "Neste dia de celebração e alegria",
-  "Na companhia de pessoas queridas",
-  "Com gratidão e amor",
-  "Para compartilhar momentos memoráveis",
-];
+const words = ["Você está sendo convidado...", "Para o casamento de"];
+/* const words = [
+  "De muita alegria e amor...",
+  "Compartilhando conosco...",
+  "Neste dia tão especial...",
+]; */
 ---
 
 <section class="container py-4">
   <div
-    class="text-xl md:text-2xl font-sans text-neutral-600 dark:text-neutral-400"
+    class="font-sans text-neutral-600 dark:text-neutral-400 gap-4 flex flex-col"
   >
-    <FlipWords client:load words={words} className="!text-[#db6f82]" />
-    <br />
-    É uma honra tê-lo conosco para celebrar este momento.
+    <!--     <FlipWords
+      client:load
+      words={words}
+      className="text-[3rem] !text-[#db6f82] font-dancing"
+    /> -->
+    <p
+      class="font-bhood text-[4rem] md:text-[6rem] !text-[#db6f82] text-center"
+    >
+      Guilherme e Karine
+    </p>
+    <p class="font-dancing text-muted-foreground text-[1.8rem] text-center">
+      Com muita alegria convidamos você para o dia mais esperado de nossas
+      vidas, venha celebrar conosco o nosso casamento!
+    </p>
   </div>
 </section>
