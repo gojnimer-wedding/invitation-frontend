@@ -9,7 +9,7 @@ export default function VaulDrawer() {
   }, []); */
   return (
     <Drawer.Root>
-      <div className="flex flex-1 flex-col w-full gap-4 pt-16">
+      <div className="flex flex-1 flex-col w-full gap-4 py-12">
         <Drawer.Trigger className="text-2xl uppercase text-white bg-[#db6f82] w-full mx-auto px-4 py-6">
           Confirmar presença 💃
         </Drawer.Trigger>
