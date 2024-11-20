@@ -1,17 +1,23 @@
 import { Drawer } from "vaul";
 
 export default function VaulDrawer() {
+  /*   useEffect(() => {
+    const invite = async () => {
+      console.log(await getInvitation("1"));
+    };
+    invite();
+  }, []); */
   return (
     <Drawer.Root>
-      <div className="flex flex-1 flex-col w-full gap-4">
+      <div className="flex flex-1 flex-col w-full gap-4 pt-16">
         <Drawer.Trigger className="text-2xl uppercase text-white bg-[#db6f82] w-full mx-auto px-4 py-6">
           Confirmar presença 💃
         </Drawer.Trigger>
         <button
           role="link"
-          className=" w-fit self-center relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:w-full after:origin-bottom after:scale-x-0 after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom hover:after:scale-x-100"
+          className="text-muted-foreground w-fit self-center relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:w-full after:origin-bottom after:scale-x-0 after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom hover:after:scale-x-100"
         >
-          Não poderei ir dessa vez, {":("}
+          Não poderei comparecer, {":("}
         </button>
       </div>
 
