@@ -34,7 +34,9 @@ export default function Modal({ invite }: { invite: Invite }) {
     {
       onSuccess: (data) => {
         if (data.Status === "Convite Aceito") {
-          (thanksModalRef as any).current.open();
+          setTimeout(() => {
+            (thanksModalRef as any).current.open();
+          }, 1000);
         }
       },
     },
@@ -70,6 +72,7 @@ export default function Modal({ invite }: { invite: Invite }) {
   return (
     <>
       <AnimatedSubscribeButton
+        isLoading={isMutating}
         buttonColor="#db6f82"
         buttonTextColor="white"
         onClick={onButtonClick}

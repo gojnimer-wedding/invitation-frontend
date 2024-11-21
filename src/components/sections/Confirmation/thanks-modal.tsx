@@ -17,32 +17,25 @@ const ThanksModal = forwardRef(function ThanksModal(_, ref) {
               aria-hidden
               className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-gray-300 mb-8"
             />
-            <Drawer.Title className="font-medium mb-4 text-gray-900">
-              🎉 Obrigado por confirmar! 💕
+            <Drawer.Title className="font-bhood text-center text-[4rem] md:text-[6rem] !text-[#db6f82]">
+              Confirmação Recebida!
             </Drawer.Title>
-            <div className="text-center">
-              <p className="mt-4 text-gray-600">
-                Estamos muito felizes por saber que você estará conosco nesse
-                dia tão especial! Sua presença tornará nosso momento ainda mais
-                mágico. 💖
+            <div className="px-4">
+              <p className="text-center mt-4 text-gray-600 font-dancing text-[1.5rem] text-muted-foreground">
+                Que alegria saber que você estará presente! Será um dia
+                inesquecível, e sua companhia o tornará ainda mais especial. 💕
               </p>
-              <p className="mt-4 text-gray-600">
+            </div>
+            <div className="mt-6 space-y-4 px-4">
+              <p className="mt-4 text-gray-600 text-start text-[1rem]">
                 Para te ajudar com os preparativos, aqui estão alguns links
                 úteis:
               </p>
-            </div>
-            <div className="mt-6 space-y-4">
               <a
                 href="#"
                 className="block w-full text-center bg-[#db6f82] text-white py-2 rounded-lg  transition"
               >
-                📍 Lista de presentes
-              </a>
-              <a
-                href="#"
-                className="block w-full text-center bg-[#db6f82] text-white py-2 rounded-lg  transition"
-              >
-                🏨 Hotéis Próximos
+                🎁 Lista de Presentes
               </a>
               <a
                 href="#"

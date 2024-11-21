@@ -10,6 +10,7 @@ interface AnimatedSubscribeButtonProps {
   initialText: React.ReactElement | string;
   changeText: React.ReactElement | string;
   onClick?: () => void;
+  isLoading?: boolean;
 }
 
 export const AnimatedSubscribeButton: React.FC<
@@ -21,6 +22,7 @@ export const AnimatedSubscribeButton: React.FC<
   changeText,
   initialText,
   onClick,
+  isLoading,
 }) => {
   return (
     <AnimatePresence mode="wait">
@@ -44,7 +46,8 @@ export const AnimatedSubscribeButton: React.FC<
         </motion.button>
       ) : (
         <motion.button
-          className="relative flex w-full cursor-pointer items-center justify-center  border-none px-[10px] py-[25px]"
+          disabled={isLoading}
+          className="disabled:opacity-85 relative flex w-full cursor-pointer items-center justify-center  border-none px-[10px] py-[25px]"
           style={{ backgroundColor: buttonColor, color: buttonTextColor }}
           onClick={onClick}
           initial={{ opacity: 0 }}
