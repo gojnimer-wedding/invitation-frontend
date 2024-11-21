@@ -1,24 +1,78 @@
+import { AnimatedSubscribeButton } from "@/components/ui/subscribe-button";
+import { actions } from "astro:actions";
+import { CheckIcon } from "lucide-react";
+import { useCallback } from "react";
+import useSWRMutation from "swr/mutation";
 import { Drawer } from "vaul";
 
-export default function VaulDrawer() {
-  /*   useEffect(() => {
-    const invite = async () => {
-      console.log(await getInvitation("1"));
-    };
-    invite();
-  }, []); */
+interface Invite {
+  Id: number;
+  Status:
+    | "Aguardando envio"
+    | "Aguardando confirmação"
+    | "Convite Aceito"
+    | "Convite Recusado";
+}
+export default function Modal({ invite }: { invite: Invite }) {
+  const { trigger, isMutating, data } = useSWRMutation(
+    [invite.Id],
+    (
+      [id],
+      {
+        arg,
+      }: {
+        arg: Invite["Status"];
+      },
+    ) =>
+      actions.nocodb
+        .updateInviteStatus({
+          rowId: id,
+          status: arg,
+        })
+        .then((res) => res.data),
+  );
+
+  const isInviteAccepted = (data ?? invite).Status === "Convite Aceito";
+
+  const onButtonClick = useCallback(() => {
+    if (isMutating) return;
+    if (isInviteAccepted) return trigger("Aguardando confirmação");
+    trigger("Convite Aceito");
+  }, [isMutating, trigger, isInviteAccepted]);
+
+  /*   if (!isInviteEnabled) return null; */
   return (
     <Drawer.Root>
       <div className="flex flex-1 flex-col w-full gap-4 py-12">
-        <Drawer.Trigger className="text-2xl uppercase text-white bg-[#db6f82] w-full mx-auto px-4 py-6">
+        {/*         <Drawer.Trigger className="text-2xl uppercase text-white bg-[#db6f82] w-full mx-auto px-4 py-6">
           Confirmar presença 💃
-        </Drawer.Trigger>
-        <button
+        </Drawer.Trigger> */}
+        <AnimatedSubscribeButton
+          buttonColor="#db6f82"
+          buttonTextColor="white"
+          onClick={onButtonClick}
+          subscribeStatus={isInviteAccepted}
+          initialText={
+            <span className="group inline-flex items-center">
+              Confirmar presença💃
+            </span>
+          }
+          changeText={
+            <span className="group inline-flex items-center">
+              <CheckIcon className="mr-2 size-4" />
+              Presença Confirmada{" "}
+            </span>
+          }
+        />
+        <Drawer.Trigger asChild></Drawer.Trigger>
+
+        {/*         <button
+          onClick={() => trigger("Convite Recusado")}
           role="link"
           className="text-muted-foreground w-fit self-center relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:w-full after:origin-bottom after:scale-x-0 after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom hover:after:scale-x-100"
         >
           Não poderei comparecer, {":("}
-        </button>
+        </button> */}
       </div>
 
       <Drawer.Portal>
@@ -33,6 +87,13 @@ export default function VaulDrawer() {
               <Drawer.Title className="font-medium mb-4 text-gray-900">
                 Confirmar presença.
               </Drawer.Title>
+              <button
+                onClick={async () => {
+                  trigger("Convite Aceito");
+                }}
+              >
+                {isMutating ? "Carregando..." : "Confirmar presença"}
+              </button>
               <p className="text-gray-600 mb-2">
                 This component can be used as a Dialog replacement on mobile and
                 tablet devices. You can read about why and how it was built{" "}

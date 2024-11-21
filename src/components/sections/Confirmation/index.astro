@@ -1,0 +1,8 @@
+---
+import getInviteStatus from "@/services/nocodb/get_invite_status";
+import Modal from "./modal";
+const { inviteId } = Astro.params;
+const invite = (await getInviteStatus(inviteId as string)) as any;
+---
+
+{invite && <Modal invite={invite} client:load />}
