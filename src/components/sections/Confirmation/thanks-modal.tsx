@@ -17,7 +17,7 @@ const ThanksModal = forwardRef(function ThanksModal(_, ref) {
               aria-hidden
               className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-gray-300 mb-8"
             />
-            <Drawer.Title className="font-bhood text-center text-[4rem] md:text-[6rem] !text-[#db6f82]">
+            <Drawer.Title className="font-bhood text-center text-[4.2rem] md:text-[6rem] !text-[#db6f82]">
               Confirmação Recebida!
             </Drawer.Title>
             <div className="px-4">
@@ -26,26 +26,26 @@ const ThanksModal = forwardRef(function ThanksModal(_, ref) {
                 inesquecível, e sua companhia o tornará ainda mais especial. 💕
               </p>
             </div>
-            <div className="mt-6 space-y-4 px-4">
+            <div className="mt-6 space-y-2 px-4">
               <p className="mt-4 text-gray-600 text-start text-[1rem]">
                 Para te ajudar com os preparativos, aqui estão alguns links
                 úteis:
               </p>
               <a
                 href="#"
-                className="block w-full text-center bg-[#db6f82] text-white py-2 rounded-lg  transition"
+                className="block w-full text-center bg-[#db6f82] text-white py-3 text-lg rounded-sm"
               >
                 🎁 Lista de Presentes
               </a>
               <a
                 href="#"
-                className="block w-full text-center bg-[#db6f82] text-white py-2 rounded-lg  transition"
+                className="block w-full text-center bg-[#db6f82] text-white py-3 text-lg rounded-sm"
               >
                 🕒 Programação do Casamento
               </a>
             </div>
 
-            <div className="mt-6 text-center">
+            <div className="mt-6 text-center mb-10">
               <p className="text-gray-600">
                 Dúvidas? Entre em contato conosco! 💌
               </p>
