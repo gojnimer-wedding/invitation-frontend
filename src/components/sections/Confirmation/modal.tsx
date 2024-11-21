@@ -34,11 +34,31 @@ export default function Modal({ invite }: { invite: Invite }) {
 
   const isInviteAccepted = (data ?? invite).Status === "Convite Aceito";
 
+  const isInviteRecused = (data ?? invite).Status === "Convite Recusado";
+
   const onButtonClick = useCallback(() => {
     if (isMutating) return;
-    if (isInviteAccepted) return trigger("Aguardando confirmação");
+    if (isInviteAccepted || isInviteRecused)
+      return trigger("Aguardando confirmação");
     trigger("Convite Aceito");
   }, [isMutating, trigger, isInviteAccepted]);
+
+  if (isInviteRecused)
+    return (
+      <div className="flex flex-1 flex-col w-full gap-4 py-12 px-12">
+        <p className="text-muted-foreground w-fit self-center">
+          Que pena que você não poderá comparecer! 😔{" "}
+          <span
+            className="hover:text-[#db6f82] cursor-pointer underline"
+            onClick={onButtonClick}
+          >
+            Caso mude de ideia, você pode clicar aqui para confirmar sua
+            presença.
+          </span>{" "}
+          Vamos adorar te ter conosco nesse dia especial! 💕
+        </p>
+      </div>
+    );
 
   /*   if (!isInviteEnabled) return null; */
   return (
@@ -66,13 +86,15 @@ export default function Modal({ invite }: { invite: Invite }) {
         />
         <Drawer.Trigger asChild></Drawer.Trigger>
 
-        {/*         <button
-          onClick={() => trigger("Convite Recusado")}
-          role="link"
-          className="text-muted-foreground w-fit self-center relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:w-full after:origin-bottom after:scale-x-0 after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom hover:after:scale-x-100"
-        >
-          Não poderei comparecer, {":("}
-        </button> */}
+        {!isInviteAccepted && (
+          <button
+            onClick={() => trigger("Convite Recusado")}
+            role="link"
+            className="text-muted-foreground w-fit self-center relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:w-full after:origin-bottom after:scale-x-0 after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom hover:after:scale-x-100"
+          >
+            Não poderei comparecer, {":("}
+          </button>
+        )}
       </div>
 
       <Drawer.Portal>
