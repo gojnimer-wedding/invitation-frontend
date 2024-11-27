@@ -13,7 +13,7 @@ interface Invite {
     | "Convite Aceito"
     | "Convite Recusado";
 }
-export default function Modal({ invite }: { invite: Invite }) {
+export default function Options({ invite }: { invite: Invite }) {
   const thanksModalRef = useRef(null);
   const { trigger, isMutating, data } = useSWRMutation(
     [invite.Id],
@@ -48,8 +48,8 @@ export default function Modal({ invite }: { invite: Invite }) {
 
   const onButtonClick = useCallback(() => {
     if (isMutating) return;
-    if (isInviteAccepted || isInviteRecused)
-      return trigger("Aguardando confirmação");
+    if (isInviteAccepted) return (thanksModalRef as any).current.open();
+    if (isInviteRecused) return trigger("Aguardando confirmação");
     trigger("Convite Aceito");
   }, [isMutating, trigger, isInviteAccepted]);
 
@@ -89,6 +89,15 @@ export default function Modal({ invite }: { invite: Invite }) {
           </span>
         }
       />
+      <p className="text-muted-foreground w-full text-center pt-2">
+        Não poderá comparecer?{" "}
+        <span
+          className="hover:text-[#db6f82] cursor-pointer underline"
+          onClick={() => trigger("Convite Recusado")}
+        >
+          Clique aqui para recusar o convite.
+        </span>
+      </p>
       <ThanksModal ref={thanksModalRef} />
     </>
   );
