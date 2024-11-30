@@ -1,5 +1,5 @@
 ---
-import Confirmation from "@/components/sections/Confirmation";
+import Confirmation from "@/components/sections/Confirmation/index.astro";
 import Cover from "@/components/sections/Cover.astro";
 import Location from "@/components/sections/Location.astro";
 import MainAlbum from "@/components/sections/MainAlbum.astro";
@@ -16,7 +16,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     <!--     <MarqueeAlbum /> -->
     <MainAlbum />
     <Location />
-    <Confirmation client:only="react" />
+    <Confirmation />
     <!--     <RotatingAlbum /> -->
   </div>
 </BaseLayout>
