@@ -1,6 +1,6 @@
 ---
-import "@/styles/globals.css";
 import "@/styles/fonts.css";
+import "@/styles/globals.css";
 
 interface Props {
   title?: string | undefined;
@@ -18,7 +18,7 @@ const { title, description } = Astro.props;
 <link
   rel="shortcut icon"
   type="image/svg+xml"
-  href={`${Astro.site}favicon.svg`}
+  href={`${Astro.site}favicon.ico`}
 />
 <title>{title}</title>
 <meta name="title" content={title} />

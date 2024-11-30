@@ -1,0 +1,10 @@
+---
+import getInviteStatus from "@/services/nocodb/get_invite_status";
+import Options from "./options";
+import ThanksModal from "./thanks-modal";
+const { inviteId } = Astro.params;
+const invite = (await getInviteStatus(inviteId as string)) as any;
+---
+
+{invite && <Options invite={invite} client:load />}
+<ThanksModal client:load />
